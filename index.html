@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fashion Retail Sales Visualizations</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 50px;
+        }
+        .chart {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fashion Retail Sales Visualizations</h1>
+
+    <div class="chart-container">
+        <div class="chart" id="bar-chart-container">
+            <h2>Total Sales by Item Purchased</h2>
+            <svg id="barChart" width="600" height="400"></svg>
+        </div>
+
+        <div class="chart" id="pie-chart-container">
+            <h2>Sales Distribution by Payment Method</h2>
+            <svg id="pieChart" width="450" height="450"></svg>
+        </div>
+
+        <div class="chart" id="line-graph-container">
+            <h2>Sales Over Time</h2>
+            <svg id="lineGraph" width="600" height="400"></svg>
+        </div>
+
+        <div class="chart" id="scatter-plot-container">
+            <h2>Purchase Amount vs. Review Rating</h2>
+            <svg id="scatterPlot" width="600" height="400"></svg>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="barChart.js"></script>
+    <script src="pieChart.js"></script>
+    <script src="lineGraph.js"></script>
+    <script src="scatterPlot.js"></script>
+</body>
+</html>
