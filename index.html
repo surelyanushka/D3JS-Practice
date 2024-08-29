@@ -14,10 +14,22 @@
         .chart {
             margin: 20px;
         }
+        
+        .country {
+            fill: #ccc;
+            stroke: #333;
+            stroke-width: 0.5px;
+        }
+
+        .country:hover {
+            fill: steelblue;
+        }
+
     </style>
 </head>
 <body>
     <h1>Fashion Retail Sales Visualizations</h1>
+    <!-- dataset from kaggle -->
 
     <div class="chart-container">
         <div class="chart" id="bar-chart-container">
@@ -39,6 +51,11 @@
             <h2>Purchase Amount vs. Review Rating</h2>
             <svg id="scatterPlot" width="600" height="400"></svg>
         </div>
+        <div class="chart" id="worldMap-container">
+            <h2>World Atlas</h2>
+            <svg id="worldMap" width="900" height="600"></svg>
+        </div>
+       
     </div>
 
     <!-- JavaScript files -->
@@ -46,5 +63,6 @@
     <script src="pieChart.js"></script>
     <script src="lineGraph.js"></script>
     <script src="scatterPlot.js"></script>
+    <script src="worldMap.js"></script>
 </body>
 </html>

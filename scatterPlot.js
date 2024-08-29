@@ -31,6 +31,17 @@ d3.csv("Fashion_Retail_Sales.csv").then(function(data) {
         .attr("transform", `translate(${marginScatter.left},0)`)
         .call(d3.axisLeft(yScatter));
 
+    // Create a tooltip div that is initially hidden
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
+        .style("background", "#f9f9f9")
+        .style("border", "1px solid #ccc")
+        .style("padding", "10px")
+        .style("border-radius", "4px");
+
+    // Plot the scatter points
     svgScatter.append("g")
         .selectAll("dot")
         .data(scatterPlotData)
@@ -38,5 +49,20 @@ d3.csv("Fashion_Retail_Sales.csv").then(function(data) {
         .attr("cx", d => xScatter(d['Purchase Amount (USD)']))
         .attr("cy", d => yScatter(d['Review Rating']))
         .attr("r", 5)
-        .attr("fill", "steelblue");
+        .attr("fill", "steelblue")
+        .on("mouseover", function(event, d) {
+            tooltip.style("visibility", "visible")
+                   .text(`Amount: $${d['Purchase Amount (USD)']} | Rating: ${d['Review Rating']}`)
+                   .style("left", (event.pageX + 15) + "px")
+                   .style("top", (event.pageY - 15) + "px");
+            d3.select(this).attr("r", 8).attr("fill", "orange");  // Highlight the point
+        })
+        .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 15) + "px")
+                   .style("top", (event.pageY - 15) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.style("visibility", "hidden");
+            d3.select(this).attr("r", 5).attr("fill", "steelblue");  // Reset the point
+        });
 });
